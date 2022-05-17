@@ -21,19 +21,19 @@ const checkCarId = (req, res, next) => {
 
 const checkCarPayload = (req, res, next) => {
   if (!req.body.vin) {
-    res.status(400).json({message: 'VIN is missing'})
+    res.status(400).json({message: 'vin is missing'})
     return
   }
   if (!req.body.make) {
-    res.status(400).json({message: 'MAKE is missing'})
+    res.status(400).json({message: 'make is missing'})
     return
   }
   if (!req.body.model) {
-    res.status(400).json({message: 'MODEL is missing'})
+    res.status(400).json({message: 'model is missing'})
     return
   }
-  if (typeof parseInt(req.body.mileage) !='number') {
-    res.status(400).json({message: 'MILEAGE is missing'})
+  if (!req.body.mileage || typeof parseInt(req.body.mileage) !='number') {
+    res.status(400).json({message: 'mileage is missing'})
     return
   }else{
     next();
